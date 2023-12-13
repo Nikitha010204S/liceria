@@ -1,0 +1,178 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liceria-Furnitures</title>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="home.css">
+    <script src="https://kit.fontawesome.com/3b161c540c.js" crossorigin="anonymous"></script>
+    
+    
+
+</head>
+
+<body>
+    <!-- HEADER -->
+
+    <div class="container">
+        <div class="navbar">
+            <a class="logo">LICERA</a>
+            <ul class="nav-list">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="products.html">Category</a></li>
+              
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="blogs.html">Blogs</a></li>
+            </ul>
+            <div>
+               
+            </div>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-times"></i>
+            </div>
+        </div>
+    </div>
+   
+<br><br><br><br><br><br><br><br>
+
+<section id="c">
+    <div class="contain">
+
+        <div class="wrapper">
+      
+          <div class="form">
+            <h4>GET IN TOUCH</h4>
+            <h2 class="form-headline">Send us a message</h2>
+            <form id="submit-form" action="#" method="POST">
+              <p>
+                <input id="name" class="form-input" type="text" placeholder="Your Name*" name="name">
+                <small class="name-error"></small>
+              </p>
+              <p>
+                <input id="email" class="form-input" type="email" placeholder="Your Email*" name="email">
+                <small class="name-error"></small>
+              </p>
+             
+              <p class="full-width">
+                <textarea  minlength="20" id="message" cols="30" rows="7" placeholder="Your Message*"  name="message"></textarea>
+                <small></small>
+              </p>
+              <p class="full-width">
+                <input type="checkbox" id="checkbox" name="checkbox" checked> Yes, I would like to receive communications by call / email about Company's services.
+              </p>
+              <p class="full-width">
+                <input type="submit" class="submit-btn" value="Submit" id="submit" name="submit">
+                <button class="reset-btn" onclick="reset()" >Reset</button>
+              </p>
+
+              
+              <script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
+  import { getDatabase,ref,set,get,child} from "https://www.gstatic.com/firebasejs/10.6.0/firebase-database.js";
+  
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyDoxkBXAj7Sw4f6Gr_sq-O1tKKGiHAsGUA",
+    authDomain: "contact-6eb2c.firebaseapp.com",
+    projectId: "contact-6eb2c",
+    storageBucket: "contact-6eb2c.appspot.com",
+    messagingSenderId: "722693543438",
+    appId: "1:722693543438:web:f5cc3600be1bd81c638e5f"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+
+  //get ref to database serviices
+  const db=getDatabase(app);
+document.getElementById("submit").addEventListener("click",function(e){
+    e.preventDefault();
+    set(ref(db,'user/' + document.getElementById("name").value),
+    {
+        name:document.getElementById("name").value,
+        email:document.getElementById("email").value,
+        message:document.getElementById("message").value
+
+    });
+    alert("received successful");
+})
+
+              </script>
+             
+            </form>
+          </div>
+      
+          <div class="contacts contact-wrapper">
+      
+            <ul>
+              <li>We've driven online revenues of over <span class="highlight-text-grey">$2
+                  billion</span> for our clients. Ready to know
+                how we can help you?</li>
+              <span class="hightlight-contact-info">
+                <li class="email-info"><i class="fa fa-envelope" aria-hidden="true"></i> liceria@gmail.com</li><br>
+                <li><i class="fa fa-phone" aria-hidden="true"></i> <span class="highlight-text">+91 11 1111 2900</span></li>
+              </span>
+            </ul>
+          </div>
+        </div>
+      </div>
+      </section>
+      <br><br><br> <br><br><br>
+
+      
+<section id="contact">
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col">
+                    <h4>company</h4>
+                    <ul>
+                        <li><a href="#">about us</a></li>
+                        <li><a href="#">our services</a></li>
+                        <li><a href="#">privacy policy</a></li>
+                        <li><a href="#">affiliate program</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>get help</h4>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">shipping</a></li>
+                        <li><a href="#">returns</a></li>
+                        <li><a href="#">order status</a></li>
+                        <li><a href="#">payment options</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>online shop</h4>
+                    <ul>
+                        <li><a href="#">Sofa</a></li>
+                        <li><a href="#">Home decor</a></li>
+                        <li><a href="#">Wardrobe</a></li>
+                        <li><a href="#">Lights</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>follow us</h4>
+                    <div class="social-links">
+                      <a href="https://www.facebook.com"><i class="fab fa-facebook-f"></i></a>
+                      <a href="https://www.twitter.com"><i class="fab fa-twitter"></i></a>
+                      <a href="https://www.instagram.com"><i class="fab fa-instagram"></i></a>
+                      <a href="https://wwww.linkedin.com"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    </section>
+</body>    

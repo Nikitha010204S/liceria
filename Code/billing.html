@@ -1,0 +1,149 @@
+
+    
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liceria-Furnitures</title>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+ 
+    <link rel="stylesheet" href="billing.css">
+    <script src="https://kit.fontawesome.com/3b161c540c.js" crossorigin="anonymous"></script>
+</head>
+
+
+<div class="container">
+  <div class="title">
+      <h2>Address details</h2>
+  </div>
+<div class="d-flex">
+  <form action="" method="">
+    <label>
+      <span class="fname">First Name <span class="required">*</span></span>
+      <input type="text" name="fname" id="fname">
+    </label>
+    <label>
+      <span class="lname">Last Name <span class="required">*</span></span>
+      <input type="text" name="lname" id="lname">
+    </label>
+    <label>
+      <span>Company Name (Optional)</span>
+      <input type="text" name="cn" id="companyname">
+    </label>
+   
+    <label>
+      <span>Street Address <span class="required">*</span></span>
+      <input type="text" name="houseadd" id="street" placeholder="House number and street name" required>
+    </label>
+    <label>
+      <span>&nbsp;</span>
+      <input type="text" name="apartment" id="apartment" placeholder="Apartment, suite, unit etc. (optional)">
+    </label>
+    <label>
+      <span>Town / City <span class="required">*</span></span>
+      <input type="text" name="city" id="city"> 
+    </label>
+   
+    <label>
+      <span>Postcode / ZIP <span class="required">*</span></span>
+      <input type="text" name="city" id="zip"> 
+    </label>
+    <label>
+      <span>Phone <span class="required">*</span></span>
+      <input type="tel" name="city" id="phone"> 
+    </label>
+    <label>
+      <span>Email Address <span class="required">*</span></span>
+      <input type="email" name="city" id="email"> 
+    </label>
+  </form>
+  <div class="Yorder">
+    <table>
+      <tr>
+        <th colspan="2">Your order</th>
+      </tr>
+      <tr>
+        <td>Product Name x 2(Qty)</td>
+        <td>   </td>
+      </tr>
+      <tr>
+        <td>Subtotal</td>
+        <td>  </td>
+      </tr>
+      <tr>
+        <td>Shipping</td>
+        <td>Free shipping</td>
+      </tr>
+    </table><br>
+    <div>
+      <input type="radio" name="dbt" value="dbt" checked> Direct Bank Transfer
+    </div>
+    <p>
+        Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order will not be shipped until the funds have cleared in our account.
+    </p>
+    <div>
+      <input type="radio" name="dbt" value="cd"> Cash on Delivery
+    </div>
+    <div>
+      <input type="radio" name="dbt" value="cd"> Paypal <span>
+      <img src="https://www.logolynx.com/images/logolynx/c3/c36093ca9fb6c250f74d319550acac4d.jpeg" alt="" width="50">
+      </span>
+    </div>
+  <button type="button" id="submit" a href="success.html">Place Order</button>
+
+
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
+    import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-database.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyDYIGa0CJ6BI53FMG-a90jysa8XMavm9xk",
+        authDomain: "billing-8fcf8.firebaseapp.com",
+        databaseURL: "https://billing-8fcf8-default-rtdb.firebaseio.com",
+        projectId: "billing-8fcf8",
+        storageBucket: "billing-8fcf8.appspot.com",
+        messagingSenderId: "573042834652",
+        appId: "1:573042834652:web:2050afa8a692a89f4bc819"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    // Get a reference to the database service
+    const db = getDatabase(app);
+
+    document.getElementById("submit").addEventListener("click", function (e) {
+        e.preventDefault();
+
+        // Generate a unique ID for each entry
+        const uniqueId = generateUniqueId();
+
+        set(ref(db, 'billing/' + uniqueId), {
+            fname: document.getElementById("fname").value,
+            lname: document.getElementById("lname").value,
+            companyname: document.getElementById("companyname").value,
+            street: document.getElementById("street").value,
+            apartment: document.getElementById("apartment").value,
+            city: document.getElementById("city").value,
+            zip: document.getElementById("zip").value,
+            phone: document.getElementById("phone").value,
+            email: document.getElementById("email").value
+        }).then(() => {
+            alert("Order placed successfully");
+            window.location.href = "success.html";
+        }).catch((error) => {
+            console.error("Error placing order:", error);
+            // Handle the error, e.g., display a user-friendly message
+        });
+    });
+
+    function generateUniqueId() {
+        return Math.random().toString(36).substring(2) + (new Date()).getTime().toString(36);
+    }
+</script>
+ </div>
+</div>
+</html>
